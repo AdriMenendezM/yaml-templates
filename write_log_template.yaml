@@ -17,7 +17,7 @@ parameters:
     type: string
     label: Key name
     description: Name of key-pair to be used for compute instance
-    default: my_key
+    default: heat_key
   private_network:
     type: string
     label: Private network name or ID
