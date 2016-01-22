@@ -27,7 +27,8 @@ parameters:
     
 resources:
   root_pw:
-    type: OS::Heat::RandomString
+    type: string
+    default: pass
   myserver:
     type: OS::Nova::Server
     properties:
