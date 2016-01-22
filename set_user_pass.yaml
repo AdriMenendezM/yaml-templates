@@ -35,7 +35,6 @@ resources:
       flavor: { get_param: flavor }
       key_name: { get_param: key_name }
       networks:
-        - port: { get_resource: controller_port }
         - network: { get_resource: private_network }
       user_data_format: RAW
       user_data:
