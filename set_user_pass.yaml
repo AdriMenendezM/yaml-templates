@@ -3,10 +3,6 @@ heat_template_version: 2013-05-23
 description: >
   Heat template to generate root password
 
-resources:
-  root_pw:
-    type: OS::Heat::RandomString
-    
 parameters:
   image:
     type: string
@@ -28,7 +24,10 @@ parameters:
     label: Private network name or ID
     description: Network to attach instance to.
     default: fixed
-
+    
+resources:
+  root_pw:
+    type: OS::Heat::RandomString
   myserver:
     type: OS::Nova::Server
     properties:
