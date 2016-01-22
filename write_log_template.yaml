@@ -7,12 +7,12 @@ parameters:
     type: string
     label: Image name or ID
     description: Image to be used for compute instance
-    default: CirrOS_0.3.2
+    default: Fedora21
   flavor:
     type: string
     label: Flavor
     description: Type of instance (flavor) to be used
-    default: m1.tiny
+    default: m1.small
   key_name:
     type: string
     label: Key name
