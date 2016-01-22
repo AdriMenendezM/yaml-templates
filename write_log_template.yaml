@@ -36,4 +36,4 @@ resources:
       user_data_format: RAW
       user_data:
         #!/bin/sh
-        echo Hello world > /root/bootup.log
+        echo Hello world > test.log
