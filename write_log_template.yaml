@@ -1,7 +1,7 @@
 heat_template_version: 2013-05-23
 
 description: >
-  Heat template to generate root password
+  Heat template to write on a log file
 parameters:
   image:
     type: string
