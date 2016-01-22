@@ -1,0 +1,29 @@
+resources:
+  root_pw:
+    type: OS::Heat::RandomString
+
+  myserver:
+    type: OS::Nova::Server
+    properties:
+      image: { get_param: image }
+      flavor: { get_param: flavor }
+      key_name: { get_param: key_name }
+      networks:
+        - port: { get_resource: controller_port }
+      user_data_format: RAW
+      user_data:
+        str_replace:
+          template: |
+            #!/bin/sh
+
+            ROOT_PW="@ROOT_PW@"
+            (
+            echo "$ROOT_PW"
+            echo "$ROOT_PW"
+            ) | passwd --stdin root
+          params:
+            "@ROOT_PW@": {get_resource: root_pw}
+
+outputs:
+  root_pw:
+    value: {get_resource: root_pw}
