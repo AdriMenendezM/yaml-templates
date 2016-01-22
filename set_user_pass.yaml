@@ -27,8 +27,7 @@ parameters:
     
 resources:
   root_pw:
-    type: string
-    default: pass
+    type: OS::Heat::RandomString
   myserver:
     type: OS::Nova::Server
     properties:
@@ -49,7 +48,7 @@ resources:
             echo "$ROOT_PW"
             ) | passwd --stdin root
           params:
-            "@ROOT_PW@": {get_resource: root_pw}
+            "@ROOT_PW@": pass
 
 outputs:
   root_pw:
