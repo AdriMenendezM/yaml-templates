@@ -1,6 +1,28 @@
 resources:
   root_pw:
     type: OS::Heat::RandomString
+    
+parameters:
+  image:
+    type: string
+    label: Image name or ID
+    description: Image to be used for compute instance
+    default: CirrOS_0.3.2
+  flavor:
+    type: string
+    label: Flavor
+    description: Type of instance (flavor) to be used
+    default: m1.tiny
+  key_name:
+    type: string
+    label: Key name
+    description: Name of key-pair to be used for compute instance
+    default: my_key
+  private_network:
+    type: string
+    label: Private network name or ID
+    description: Network to attach instance to.
+    default: fixed
 
   myserver:
     type: OS::Nova::Server
@@ -10,6 +32,7 @@ resources:
       key_name: { get_param: key_name }
       networks:
         - port: { get_resource: controller_port }
+        - network: { get_resource: private_network }
       user_data_format: RAW
       user_data:
         str_replace:
